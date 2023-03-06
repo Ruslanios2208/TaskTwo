@@ -25,9 +25,6 @@
                                     <imageReference key="image" image="arrow.right.circle.fill" catalog="system" symbolScale="medium"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="anyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFl-Hk-ME2"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-Gk-tMX">
                                 <rect key="frame" x="81.333333333333329" y="121.33333333333331" width="230.33333333333337" height="35"/>
@@ -37,9 +34,6 @@
                                     <imageReference key="image" image="arrow.right.circle.fill" catalog="system" symbolScale="medium"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="anyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CZ6-VH-yvT"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjV-fu-rBB">
                                 <rect key="frame" x="151" y="163.66666666666666" width="91.333333333333314" height="35"/>
@@ -50,7 +44,6 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="anyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yOg-6N-csN"/>
                                     <action selector="thirdButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0X-J2-RD5"/>
                                     <segue destination="pFe-VK-vbz" kind="presentation" id="NtX-tg-dEX"/>
                                 </connections>

@@ -42,10 +42,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func anyButtonPressed(_ sender: UIButton) {
-        sender.pulsate()
-    }
-    
     @IBAction func thirdButtonPressed() {
         buttons.forEach { $0.isEnabled = false }
     }
@@ -53,14 +49,18 @@ class ViewController: UIViewController {
 
 extension UIButton {
     
-    func pulsate() {
-        let pulse = CASpringAnimation(keyPath: "transform.scale")
-        pulse.duration = 0.2
-        pulse.fromValue = 0.9
-        pulse.toValue = 1
-        pulse.initialVelocity = 0.5
-
-        layer.add(pulse, forKey: nil)
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction, .curveEaseIn]) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction, .curveEaseOut]) {
+            self.transform = .identity
+        }
     }
 }
 
