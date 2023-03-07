@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,81 +15,16 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGC-sz-BS3">
-                                <rect key="frame" x="126.66666666666669" y="79" width="140" height="35"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="First Button" imagePadding="8">
-                                    <imageReference key="image" image="arrow.right.circle.fill" catalog="system" symbolScale="medium"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-Gk-tMX">
-                                <rect key="frame" x="81.333333333333329" y="121.33333333333331" width="230.33333333333337" height="35"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Second Medium Button" imagePadding="8">
-                                    <imageReference key="image" image="arrow.right.circle.fill" catalog="system" symbolScale="medium"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjV-fu-rBB">
-                                <rect key="frame" x="151" y="163.66666666666666" width="91.333333333333314" height="35"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Third" imagePadding="8">
-                                    <imageReference key="image" image="arrow.right.circle.fill" catalog="system" symbolScale="medium"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="thirdButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="D0X-J2-RD5"/>
-                                    <segue destination="pFe-VK-vbz" kind="presentation" id="NtX-tg-dEX"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="OGC-sz-BS3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FiT-DX-l1c"/>
-                            <constraint firstItem="KsB-Gk-tMX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GuC-6d-iOf"/>
-                            <constraint firstItem="hjV-fu-rBB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JFf-ES-uui"/>
-                            <constraint firstItem="hjV-fu-rBB" firstAttribute="firstBaseline" secondItem="KsB-Gk-tMX" secondAttribute="baseline" constant="42.333333333333329" symbolType="layoutAnchor" id="X9E-SO-EqI"/>
-                            <constraint firstItem="OGC-sz-BS3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="eza-ZJ-eO5"/>
-                            <constraint firstItem="KsB-Gk-tMX" firstAttribute="firstBaseline" secondItem="OGC-sz-BS3" secondAttribute="baseline" constant="42.333333333333329" symbolType="layoutAnchor" id="kza-tz-kIW"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outletCollection property="buttons" destination="OGC-sz-BS3" collectionClass="NSMutableArray" id="TAO-o5-qnQ"/>
-                        <outletCollection property="buttons" destination="KsB-Gk-tMX" collectionClass="NSMutableArray" id="ocG-b2-D6I"/>
-                        <outletCollection property="buttons" destination="hjV-fu-rBB" collectionClass="NSMutableArray" id="1ol-HM-RFJ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="12.977099236641221" y="3.5211267605633805"/>
         </scene>
-        <!--Next View Controller-->
-        <scene sceneID="Axq-VG-xsi">
-            <objects>
-                <viewController id="pFe-VK-vbz" customClass="NextViewController" customModule="TaskTwo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vgH-3G-I0y">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="IeB-Ie-V6V"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KWQ-lb-RSi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="905" y="4"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="arrow.right.circle.fill" catalog="system" width="128" height="123"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

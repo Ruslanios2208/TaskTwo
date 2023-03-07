@@ -7,66 +7,130 @@
 
 import UIKit
 
-protocol NextViewControllerDelegate {
-    func changeButtonState()
-}
-
 class ViewController: UIViewController {
     
-    @IBOutlet var buttons: [UIButton]!
-
+    let firstButton = Button(title: "First Button")
+    let secondButton = Button(title: "Second Middle Button")
+    let thirdButton = Button(title: "Third")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let nextVC = segue.destination as? NextViewController else { return }
-        nextVC.delegate = self
-    }
+        view.addSubview(firstButton)
+        view.addSubview(secondButton)
+        view.addSubview(thirdButton)
         
-    private func setup() {
-        for button in buttons {
-            button.layer.cornerRadius = 7
-            button.configuration?.contentInsets = NSDirectionalEdgeInsets(
-                top: 10, leading: 14, bottom: 10, trailing: 14
-            )
-            button.configurationUpdateHandler = { button in
-                switch button.state {
-                case .disabled:
-                    button.backgroundColor = .gray
-                default:
-                    button.backgroundColor = .link
+        thirdButton.addTarget(
+            self,
+            action: #selector(thirdButtonTapped),
+            for: .touchUpInside
+        )
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if (firstButton.transform == .identity
+            && secondButton.transform == .identity
+            && thirdButton.transform == .identity) {
+            
+            firstButton.setInsets()
+            firstButton.center.x = view.frame.width / 2
+            firstButton.frame.origin.y = view.safeAreaInsets.top
+            
+            secondButton.setInsets()
+            secondButton.center.x = firstButton.center.x
+            secondButton.frame.origin.y = firstButton.frame.maxY + 8
+            
+            thirdButton.setInsets()
+            thirdButton.center.x = secondButton.center.x
+            thirdButton.frame.origin.y = secondButton.frame.maxY + 8
+        }
+    }
+    
+    @objc func thirdButtonTapped() {
+        let nextVC = UIViewController()
+        nextVC.view.backgroundColor = .systemBackground
+        present(nextVC, animated: true)
+    }
+}
+
+class Button: UIButton {
+    
+    override var isHighlighted: Bool {
+        didSet {
+            UIView.animate(
+                withDuration: 0.15,
+                delay: 0,
+                usingSpringWithDamping: 1,
+                initialSpringVelocity: 1,
+                options: [.beginFromCurrentState, .allowUserInteraction]) {
+                    self.transform = self.isHighlighted
+                    ? .init(scaleX: 0.94, y: 0.94)
+                    : .identity
                 }
-            }
         }
     }
     
-    @IBAction func thirdButtonPressed() {
-        buttons.forEach { $0.isEnabled = false }
-    }
-}
+    init(title: String) {
+        super.init(frame: .zero)
+        setTitle(title, for: .normal)
+        
+        setImage(
+            .init(systemName: "arrow.right.circle.fill")?.withRenderingMode(.alwaysTemplate),
+            for: .normal
+        )
+        setImage(
+            .init(systemName: "arrow.right.circle.fill")?.withRenderingMode(.alwaysTemplate),
+            for: .highlighted
+        )
 
-extension UIButton {
+        tintColorDidChange()
+        
+        layer.cornerRadius = 8
+        layer.cornerCurve = .continuous
+    }
     
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction, .curveEaseIn]) {
-            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        if tintAdjustmentMode == .dimmed {
+            self.imageView?.tintColor = .systemGray
+            self.setTitleColor(.systemGray3, for: .normal)
+            self.backgroundColor = .systemGray2
+        } else {
+            self.imageView?.tintColor = .white
+            self.setTitleColor(.white, for: .normal)
+            self.backgroundColor = .systemBlue
         }
     }
     
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction, .curveEaseOut]) {
-            self.transform = .identity
-        }
+    func setInsets() {
+        let titleImageSpace: CGFloat = 8
+        
+        contentEdgeInsets = .init(
+            top: 10,
+            left: 14,
+            bottom: 10,
+            right: 14 + titleImageSpace
+        )
+        sizeToFit()
+        
+        let imageWidth = imageView?.frame.width ?? .zero
+        self.titleEdgeInsets = .init(
+            top: 0,
+            left: -imageWidth,
+            bottom: 0,
+            right: imageWidth
+        )
+        let titleWidth = titleLabel?.frame.width ?? .zero
+        self.imageEdgeInsets = .init(
+            top: 0,
+            left: titleWidth + titleImageSpace,
+            bottom: 0,
+            right: -titleWidth - titleImageSpace
+        )
     }
 }
-
-extension ViewController: NextViewControllerDelegate {
-    func changeButtonState() {
-        buttons.forEach { $0.isEnabled = true }
-    }
-}
-
